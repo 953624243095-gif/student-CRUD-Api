@@ -126,6 +126,14 @@ def delete_student(student_id: int):
             (student_id,),
         )
 
+        from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Student CRUD API is running successfully!"}
+
         if cursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Student not found")
 
